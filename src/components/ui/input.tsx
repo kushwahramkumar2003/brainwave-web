@@ -11,7 +11,7 @@ export interface InputProps
 }
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ className, label = "", name, error, register, ...props }, ref) => {
+  ({ className, label = "", name, error, register, ...props }) => {
     return (
       <div className="w-full">
         <label className="mb-2 block text-sm font-medium text-gray-700">

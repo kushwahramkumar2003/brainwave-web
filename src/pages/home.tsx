@@ -1,11 +1,10 @@
-import  { useState } from "react";
-import { Plus, Share2 } from "lucide-react";
-import Button from "../components/ui/button";
+import { useState } from "react";
 import ContentCard, { ContentCardProps } from "../components/ContentCard";
 import { useQuery } from "@tanstack/react-query";
 import { getContent } from "../services/contentServices";
 import AddContentModal from "../components/AddContentModal";
 import ShareBrain from "../components/ShareBrain";
+import Navbar from "../components/Navbar";
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -23,20 +22,7 @@ export default function Home() {
     <>
       <div className="sticky top-0 z-10 bg-[#FAFAFA] px-8 py-6">
         <div className="mb-8 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
-          <h1 className="text-2xl font-semibold text-gray-900">All Notes</h1>
-          <div className="flex items-center gap-3">
-            <Button
-              text="Share Brain"
-              variant="secondary"
-              startIcon={<Share2 size={17} />}
-              onClick={() => setIsShareModalOpen(true)}
-            />
-            <Button
-              onClick={() => setIsModalOpen(true)}
-              text="Add Content"
-              startIcon={<Plus size={18} />}
-            />
-          </div>
+          <Navbar text="All Notes" />
         </div>
       </div>
 

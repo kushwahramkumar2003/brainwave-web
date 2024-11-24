@@ -74,14 +74,14 @@ export default function SignUp() {
           onSubmit={handleSubmit}
           className="mt-8 space-y-6"
         >
-          {({ register, formState }) => (
+          {({ formState }) => (
             <>
               <Input
                 label="Username"
                 name="username"
                 type="text"
                 autoComplete="username"
-                register={register}
+                // register={register}
                 error={formState.errors.username}
                 required
                 disabled={isSubmitting}
@@ -91,7 +91,7 @@ export default function SignUp() {
                 name="password"
                 type="password"
                 autoComplete="new-password"
-                register={register}
+                // register={register}
                 error={formState.errors.password}
                 required
                 disabled={isSubmitting}
@@ -101,7 +101,7 @@ export default function SignUp() {
                 name="confirmPassword"
                 type="password"
                 autoComplete="new-password"
-                register={register}
+                // register={register}
                 error={formState.errors.confirmPassword}
                 required
                 disabled={isSubmitting}

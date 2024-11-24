@@ -22,3 +22,8 @@ export async function addContent(data: addContentProps) {
   const res = await axiosClient.post(`/content`, data);
   return res.data.content;
 }
+export async function deleteContent(data: { contentId: string }) {
+  console.log("data", data);
+  const res = await axiosClient.delete(`/content`, { data });
+  return res.data.content;
+}

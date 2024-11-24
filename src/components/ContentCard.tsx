@@ -1,3 +1,4 @@
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import {
   Share2,
   Trash2,
@@ -6,6 +7,7 @@ import {
   Twitter,
   Link2,
 } from "lucide-react";
+import { deleteContent } from "../services/contentServices";
 
 export interface ContentCardProps {
   id: string;
@@ -22,6 +24,7 @@ export default function ContentCard({
   tags = [],
   createdAt,
   link,
+  id,
 }: ContentCardProps) {
   let videoId = "";
   if (type === "youtube") {
@@ -49,6 +52,18 @@ export default function ContentCard({
       year: "numeric",
     })}`;
   };
+  const queryClient = useQueryClient();
+
+  const { mutate } = useMutation({
+    mutationFn: async () => {
+      await deleteContent({ contentId: id });
+      return;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["all-notes"] });
+      // window.location.reload();
+    },
+  });
 
   return (
     <div className="group relative overflow-hidden rounded-xl border border-gray-100 bg-white p-4 shadow-sm transition-all duration-300 ease-in-out hover:shadow-md">
@@ -67,6 +82,7 @@ export default function ContentCard({
             <Share2 className="h-4 w-4" />
           </button>
           <button
+            onClick={() => mutate()}
             className="p-1 text-gray-400 hover:text-gray-600 transition-colors"
             aria-label="Delete"
           >
@@ -76,7 +92,10 @@ export default function ContentCard({
       </div>
 
       {type === "youtube" && (
-        <div className="mb-3 aspect-video overflow-hidden rounded-lg bg-gray-100">
+        <div
+          className="mb-3 aspect-video overflow-hidden rounded-lg bg-gray-100 hover:cursor-pointer"
+          onClick={() => window.open(link, "_blank")}
+        >
           <img
             src={`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`}
             alt="Video thumbnail"
@@ -86,7 +105,10 @@ export default function ContentCard({
       )}
 
       {type !== "youtube" && Array.isArray(title) && (
-        <div className="mb-3 space-y-1">
+        <div
+          className="mb-3 space-y-1 hover:cursor-pointer"
+          onClick={() => window.open(link, "_blank")}
+        >
           {title.slice(0, 3).map((item, index) => (
             <p key={index} className="text-sm text-gray-600 line-clamp-1">
               {item}

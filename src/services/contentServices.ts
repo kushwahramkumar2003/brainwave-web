@@ -27,3 +27,8 @@ export async function deleteContent(data: { contentId: string }) {
   const res = await axiosClient.delete(`/content`, { data });
   return res.data.content;
 }
+
+export async function getSharedBrain(brainId: string) {
+  const res = await axiosClient.get(`brain/${brainId}`);
+  return res.data;
+}

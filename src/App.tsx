@@ -9,6 +9,7 @@ import { Videos } from "./pages/videos";
 import { Documents } from "./pages/documents";
 import { Links } from "./pages/links";
 import { Tags } from "./pages/tags";
+import SharedBrain from "./pages/shared-brain";
 
 export default function App() {
   return (
@@ -29,6 +30,8 @@ export default function App() {
         <Route path="documents" element={<Documents />} />
         <Route path="links" element={<Links />} />
         <Route path="tags" element={<Tags />} />
+        <Route path="brain/:brainId" element={<SharedBrain />} />
+        <Route path="*" element={<div>404</div>} />
       </Route>
     </Routes>
   );

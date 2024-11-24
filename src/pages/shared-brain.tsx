@@ -1,7 +1,7 @@
 "use client";
 
-import { useQuery, useMutation } from "@tanstack/react-query";
-import { toast, Toaster } from "sonner";
+import { useQuery } from "@tanstack/react-query";
+import { Toaster } from "sonner";
 import { getSharedBrain } from "../services/contentServices";
 import { motion } from "framer-motion";
 import { Brain } from "lucide-react";
@@ -20,23 +20,6 @@ export default function SharedBrain() {
     queryFn: () => getSharedBrain(brainId!),
     enabled: !!brainId,
   });
-
-  const importMutation = useMutation({
-    mutationFn: async (contentId: string) => {
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      return contentId;
-    },
-    onSuccess: () => {
-      toast.success(`Content imported successfully!`);
-    },
-    onError: () => {
-      toast.error("Failed to import content. Please try again.");
-    },
-  });
-
-  const handleImport = (contentId: string) => {
-    importMutation.mutate(contentId);
-  };
 
   if (isLoading) {
     return (
@@ -93,7 +76,7 @@ export default function SharedBrain() {
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {data.content.map((item: SharedContentCardProps) => (
-          <SharedContentCard key={item.id} {...item} onImport={handleImport} />
+          <SharedContentCard key={item.id} {...item} />
         ))}
       </div>
     </div>

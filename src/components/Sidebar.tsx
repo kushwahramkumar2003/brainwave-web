@@ -29,27 +29,32 @@ const Sidebar: React.FC<SidebarProps> = ({ className, onMobileClose }) => {
   const location = useLocation();
 
   const navItems: NavItem[] = [
-    { id: "home", icon: <Brain size={20} />, label: "Home", href: "/" },
+    { id: "home", icon: <Brain size={20} />, label: "Home", href: "/b" },
     {
       id: "tweets",
       icon: <Twitter size={20} />,
       label: "Tweets",
-      href: "/tweets",
+      href: "/b/tweets",
     },
     {
       id: "videos",
       icon: <Video size={20} />,
       label: "Videos",
-      href: "/videos",
+      href: "/b/videos",
     },
     {
       id: "documents",
       icon: <FileText size={20} />,
       label: "Documents",
-      href: "/documents",
+      href: "/b/documents",
     },
-    { id: "links", icon: <Link2 size={20} />, label: "Links", href: "/links" },
-    { id: "tags", icon: <Hash size={20} />, label: "Tags", href: "/tags" },
+    {
+      id: "links",
+      icon: <Link2 size={20} />,
+      label: "Links",
+      href: "/b/links",
+    },
+    { id: "tags", icon: <Hash size={20} />, label: "Tags", href: "/b/tags" },
   ];
 
   const toggleSidebar = () => {

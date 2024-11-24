@@ -32,3 +32,9 @@ export async function getSharedBrain(brainId: string) {
   const res = await axiosClient.get(`brain/${brainId}`);
   return res.data;
 }
+export async function importContentFromBrain(contentId: string) {
+  const res = await axiosClient.post(`brain/content/import`, {
+    contentId,
+  });
+  return res.data;
+}

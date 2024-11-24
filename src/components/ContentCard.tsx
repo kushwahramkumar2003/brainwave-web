@@ -8,6 +8,7 @@ import {
   Link2,
 } from "lucide-react";
 import { deleteContent } from "../services/contentServices";
+import { Tweet } from "react-tweet";
 
 export interface ContentCardProps {
   id: string;
@@ -27,8 +28,12 @@ export default function ContentCard({
   id,
 }: ContentCardProps) {
   let videoId = "";
+  let tweetId = "";
   if (type === "youtube") {
     videoId = new URL(link).searchParams.get("v") || "";
+  }
+  if (type === "tweet") {
+    tweetId = new URL(link).pathname.split("/").pop() || "";
   }
   const getIcon = () => {
     switch (type?.toLowerCase()) {
@@ -104,7 +109,9 @@ export default function ContentCard({
         </div>
       )}
 
-      {type !== "youtube" && Array.isArray(title) && (
+      {type === "tweet" && <Tweet id={tweetId} />}
+
+      {type !== "youtube" && type !== "tweet" && Array.isArray(title) && (
         <div
           className="mb-3 space-y-1 hover:cursor-pointer"
           onClick={() => window.open(link, "_blank")}

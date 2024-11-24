@@ -38,7 +38,7 @@ export default function ShareBrain(
   const { mutate, isPaused: isSharing } = useMutation({
     mutationFn: onShare,
     onSuccess: (res) => {
-      setShareUrl(`${config.frontEndUrl}/brain/${res}`);
+      setShareUrl(`${config.frontEndUrl}/b/brain/${res}`);
       toast.success("Brain shared successfully!");
     },
     onError: () => {

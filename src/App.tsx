@@ -10,14 +10,16 @@ import { Documents } from "./pages/documents";
 import { Links } from "./pages/links";
 import { Tags } from "./pages/tags";
 import SharedBrain from "./pages/shared-brain";
+import LandingPage from "./pages/LandingPage";
 
 export default function App() {
   return (
     <Routes>
       <Route path="/signup" element={<SignUp />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/" element={<LandingPage />} />
       <Route
-        path="/"
+        path="/b"
         element={
           <AuthProtector>
             <Layout />

@@ -26,7 +26,7 @@ export default function Login() {
       });
       setIsSubmitting(true);
       setTimeout(() => {
-        navigate("/");
+        navigate("/b");
       }, 3000);
     },
     onError: (error) => {

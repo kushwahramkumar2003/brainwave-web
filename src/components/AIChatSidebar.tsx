@@ -169,7 +169,7 @@ export function AIChatSidebar() {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            className="fixed inset-y-0 right-0 z-50 w-[500px] bg-gradient-to-br from-gray-900 to-gray-800 shadow-2xl rounded-l-xl"
+            className="fixed inset-y-0 right-0 z-50 w-full sm:w-[500px] bg-gradient-to-br from-gray-900 to-gray-800 shadow-2xl rounded-l-xl"
           >
             {/* Chat Header */}
             <div className="flex items-center justify-between p-4 border-b border-gray-700">

@@ -139,7 +139,7 @@ const Scene = () => {
 };
 
 const LandingPage: React.FC = () => {
-  const heroRef = useRef(null);
+  const heroRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const heroElement = heroRef.current;
@@ -168,7 +168,7 @@ const LandingPage: React.FC = () => {
       <main>
         <section
           ref={heroRef}
-          className="relative h-screen flex items-center justify-center overflow-hidden"
+          className="relative h-screen flex items-center justify-center overflow-hidden max-md:flex max-md:flex-col max-md:gap-4"
         >
           <Canvas className="absolute inset-0" dpr={[1, 2]}>
             <Scene />

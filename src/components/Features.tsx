@@ -44,21 +44,27 @@ const features = [
 
 const Features: React.FC = () => {
   return (
-    <section id="features" className="py-20 bg-gray-50">
-      <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center mb-12">Features</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <section id="features" className="py-12 sm:py-16 md:py-20 ">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12">
+          Features
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {features.map((feature, index) => (
             <motion.div
               key={index}
-              className="bg-white p-6 rounded-lg shadow-md"
+              className="p-6 rounded-lg shadow-md transition-all duration-300 hover:shadow-lg bg-gray-800"
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <feature.icon className="w-12 h-12 mb-4 text-blue-500" />
-              <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-              <p className="text-gray-600">{feature.description}</p>
+              <feature.icon className="w-10 h-10 sm:w-12 sm:h-12 mb-4 text-primary" />
+              <h3 className="text-lg sm:text-xl font-semibold mb-2">
+                {feature.title}
+              </h3>
+              <p className="text-sm sm:text-base text-muted-foreground">
+                {feature.description}
+              </p>
             </motion.div>
           ))}
         </div>
